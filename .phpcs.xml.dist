@@ -44,4 +44,12 @@
 			<property name="blank_line_check" value="true"/>
 		</properties>
 	</rule>
+	<rule ref="Generic.Commenting.DocComment.MissingShort">
+		<exclude-pattern>/templates/emails/customer-sent-order.php</exclude-pattern>
+		<exclude-pattern>/templates/emails/plain/customer-sent-order.php</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound">
+		<exclude-pattern>/templates/emails/customer-sent-order.php</exclude-pattern>
+		<exclude-pattern>/templates/emails/plain/customer-sent-order.php</exclude-pattern>
+	</rule>
 </ruleset>

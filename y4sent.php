@@ -14,6 +14,11 @@
 
 defined( 'ABSPATH' ) || die(); // Exit if accessed directly.
 
+// Define Y4SENT_PLUGIN_FILE.
+if ( ! defined( 'Y4SENT_PLUGIN_FILE' ) ) {
+	define( 'Y4SENT_PLUGIN_FILE', __FILE__ );
+}
+
 // Include the main Y4sent class.
 if ( ! class_exists( 'Y4sent' ) ) {
 	include_once dirname( __FILE__ ) . '/includes/class-y4sent.php';
