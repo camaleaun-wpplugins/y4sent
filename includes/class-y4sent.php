@@ -1,18 +1,18 @@
 <?php
 /**
- * Y4sended setup
+ * Y4sent setup
  *
- * @package Y4sended
+ * @package Y4sent
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Main Y4sended Class.
+ * Main Y4sent Class.
  *
- * @class Y4sended
+ * @class Y4sent
  */
-final class Y4sended {
+final class Y4sent {
 
 	/**
 	 * Constructor for class. Hooks in methods.
@@ -55,41 +55,41 @@ final class Y4sended {
 	}
 
 	/**
-	 * Add sended order status in register.
+	 * Add sent order status in register.
 	 *
 	 * @param array $order_statuses Shop orders statuses.
 	 * @return array
 	 */
 	public function register_order_status( $order_statuses ) {
-		$sended = array(
-			'wc-sended' => array(
-				'label'                     => _x( 'Sended', 'Order status', 'y4sended' ),
+		$sent           = array(
+			'wc-sent' => array(
+				'label'                     => _x( 'Sent', 'Order status', 'y4sent' ),
 				'public'                    => false,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
 				/* translators: %s: number of orders */
-				'label_count'               => _n_noop( 'Sended <span class="count">(%s)</span>', 'Sended <span class="count">(%s)</span>', 'y4sended' ),
+				'label_count'               => _n_noop( 'Sent <span class="count">(%s)</span>', 'Sent <span class="count">(%s)</span>', 'y4sent' ),
 			),
 		);
-		$before         = apply_filters( 'y4sended_sended_before', 'wc-completed' );
-		$order_statuses = self::array_insert_before( $order_statuses, $before, $sended );
+		$before         = apply_filters( 'y4sent_sent_before', 'wc-completed' );
+		$order_statuses = self::array_insert_before( $order_statuses, $before, $sent );
 
 		return $order_statuses;
 	}
 
 	/**
-	 * Add sended order status in getter.
+	 * Add sent order status in getter.
 	 *
 	 * @param array $order_statuses Shop orders statuses.
 	 * @return array
 	 */
 	public function get_order_status( $order_statuses ) {
-		$sended         = array(
-			'wc-sended' => _x( 'Sended', 'Order status', 'y4sended' ),
+		$sent           = array(
+			'wc-sent' => _x( 'Sent', 'Order status', 'y4sent' ),
 		);
-		$before         = apply_filters( 'y4sended_sended_before', 'wc-completed' );
-		$order_statuses = self::array_insert_before( $order_statuses, $before, $sended );
+		$before         = apply_filters( 'y4sent_sent_before', 'wc-completed' );
+		$order_statuses = self::array_insert_before( $order_statuses, $before, $sent );
 		return $order_statuses;
 	}
 

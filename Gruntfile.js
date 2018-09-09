@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'y4sended',
+				textdomain: 'y4sent',
 			},
 			update_all_domains: {
 				options: {
@@ -32,8 +32,8 @@ module.exports = function( grunt ) {
 				options: {
 					domainPath: '/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
-					mainFile: 'y4sended.php',
-					potFilename: 'y4sended.pot',
+					mainFile: 'y4sent.php',
+					potFilename: 'y4sent.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

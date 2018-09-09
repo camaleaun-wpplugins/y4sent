@@ -1,10 +1,10 @@
 # Copyright (C) 2018 Yogh
-# This file is distributed under the same license as the WooCommerce Sended Status package.
+# This file is distributed under the same license as the WooCommerce Sent Status package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Sended Status 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/y4sended\n"
-"POT-Creation-Date: 2018-09-09 13:30:55+00:00\n"
+"Project-Id-Version: WooCommerce Sent Status 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/y4sent\n"
+"POT-Creation-Date: 2018-09-09 15:58:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,23 +24,23 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n1.0.2\n"
 
-#: includes/class-y4sended.php:71
+#: includes/class-y4sent.php:72
 #. translators: %s: number of orders
-msgid "Sended <span class=\"count\">(%s)</span>"
-msgid_plural "Sended <span class=\"count\">(%s)</span>"
+msgid "Sent <span class=\"count\">(%s)</span>"
+msgid_plural "Sent <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Plugin Name of the plugin/theme
-msgid "WooCommerce Sended Status"
+msgid "WooCommerce Sent Status"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/camaleaun/y4sended"
+msgid "https://github.com/camaleaun/y4sent"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "WooCommerce sended status to order"
+msgid "WooCommerce sent status to order"
 msgstr ""
 
 #. Author of the plugin/theme
@@ -51,7 +51,7 @@ msgstr ""
 msgid "https://www.yogh.com.br"
 msgstr ""
 
-#: includes/class-y4sended.php:65 includes/class-y4sended.php:83
+#: includes/class-y4sent.php:66 includes/class-y4sent.php:89
 msgctxt "Order status"
-msgid "Sended"
+msgid "Sent"
 msgstr ""
