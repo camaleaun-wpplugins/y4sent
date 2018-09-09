@@ -12,4 +12,11 @@
  * @package         Y4sended
  */
 
-// Your code starts here.
+defined( 'ABSPATH' ) || die(); // Exit if accessed directly.
+
+// Include the main Y4sended class.
+if ( ! class_exists( 'Y4sended' ) ) {
+	include_once dirname( __FILE__ ) . '/includes/class-y4sended.php';
+}
+
+new Y4sended();
