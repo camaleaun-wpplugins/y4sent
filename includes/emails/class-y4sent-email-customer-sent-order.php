@@ -15,7 +15,7 @@ if ( ! class_exists( 'Y4sent_Email_Customer_Sent_Order', false ) ) :
 	 * Order sent emails are sent to the customer when the order is marked sent and usual indicates that the order has been shipped.
 	 *
 	 * @class       WC_Email_Customer_Sent_Order
-	 * @version     2.0.0
+	 * @version     1.0.0
 	 * @package     Y4sent/Classes/Emails
 	 * @extends     WC_Email
 	 */
@@ -38,7 +38,7 @@ if ( ! class_exists( 'Y4sent_Email_Customer_Sent_Order', false ) ) :
 			);
 
 			// Triggers for this email.
-			add_action( 'y4sent_order_status_sent_notification', array( $this, 'trigger' ), 10, 2 );
+			add_action( 'woocommerce_order_status_sent_notification', array( $this, 'trigger' ), 10, 2 );
 
 			// Call parent constructor.
 			parent::__construct();

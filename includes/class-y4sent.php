@@ -51,6 +51,10 @@ final class Y4sent {
 				10,
 				4
 			);
+			add_filter(
+				'woocommerce_email_actions',
+				array( $this, 'email_action' )
+			);
 			// @codingStandardsIgnoreEnd
 		}
 	}
@@ -180,5 +184,16 @@ final class Y4sent {
 			$array = array_merge( $array, $insert );
 		}
 		return $array;
+	}
+
+	/**
+	 * Add email action.
+	 *
+	 * @param array $email_actions Email actions.
+	 * @return array
+	 */
+	public function email_action( $email_actions ) {
+		$email_actions[] = 'woocommerce_order_status_sent';
+		return $email_actions;
 	}
 }
