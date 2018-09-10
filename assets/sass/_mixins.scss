@@ -1,0 +1,13 @@
+@mixin make-nav() {
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+@mixin make-col() {
+	flex-basis: 0;
+	flex-grow: 1;
+	max-width: 100%;
+}

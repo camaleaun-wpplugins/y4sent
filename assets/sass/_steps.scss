@@ -1,0 +1,75 @@
+.y4sent-order-steps {
+	@include make-nav();
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	position: relative;
+
+
+	&::before,
+	&::after {
+		content: ' ';
+		position: absolute;
+	}
+
+	&::before {
+		width: 50%;
+		height: 8px;
+		background-color: lighten($primary, 25%);
+		top: 11px;
+		left: 12.5%;
+	}
+
+	&::after {
+		width: 25%;
+		height: 8px;
+		background-color: lighten($gray-600, 25%);
+		top: 11px;
+		left: 62.5%;
+	}
+
+	li {
+		@include make-col();
+		padding-top: 2rem;
+		position: relative;
+		z-index: 2;
+
+		&.active {
+			font-weight: bold;
+
+			&::before {
+				background-color: lighten($primary, 25%);
+			}
+
+			&::after {
+				background-color: $primary;
+			}
+		}
+
+		&::before,
+		&::after {
+			content: ' ';
+			position: absolute;
+		}
+
+		&::before {
+			width: 30px;
+			height: 30px;
+			background-color: lighten($gray-600, 25%);
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+
+		&::after {
+			width: 14px;
+			height: 14px;
+			background-color: transparent;
+			top: 8px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+	}
+}

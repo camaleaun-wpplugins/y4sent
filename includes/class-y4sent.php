@@ -15,6 +15,13 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 final class Y4sent {
 
 	/**
+	 * Y4sent version.
+	 *
+	 * @var string
+	 */
+	public $version = '1.0.0';
+
+	/**
 	 * Template path.
 	 *
 	 * @var string
@@ -25,37 +32,62 @@ final class Y4sent {
 	 * Constructor for class. Hooks in methods.
 	 */
 	public function __construct() {
-		if ( self::is_wc_active() ) {
-			// @codingStandardsIgnoreStart
-			add_filter(
-				'woocommerce_register_shop_order_post_statuses',
-				array( $this, 'register_order_status' )
-			);
-			add_filter(
-				'wc_order_statuses',
-				array( $this, 'get_order_status' )
-			);
+		$this->define_constants();
+		// @codingStandardsIgnoreStart
+		add_filter(
+			'woocommerce_register_shop_order_post_statuses',
+			array( $this, 'register_order_status' )
+		);
+		add_filter(
+			'wc_order_statuses',
+			array( $this, 'get_order_status' )
+		);
+		// @codingStandardsIgnoreEnd
 
-			// Default template base if not declared in child constructor.
-			if ( is_null( $this->template_base ) ) {
-				$this->template_base = $this->plugin_path() . '/templates/';
-			}
+		// Default template base if not declared in child constructor.
+		if ( is_null( $this->template_base ) ) {
+			$this->template_base = $this->plugin_path() . '/templates/';
+		}
 
-			add_filter(
-				'woocommerce_email_classes',
-				array( $this, 'email_class' )
-			);
-			add_filter(
-				'woocommerce_locate_core_template',
-				array( $this, 'template_file' ),
-				10,
-				4
-			);
-			add_filter(
-				'woocommerce_email_actions',
-				array( $this, 'email_action' )
-			);
-			// @codingStandardsIgnoreEnd
+		// @codingStandardsIgnoreStart
+		add_filter(
+			'woocommerce_email_classes',
+			array( $this, 'email_class' )
+		);
+		add_filter(
+			'woocommerce_locate_core_template',
+			array( $this, 'template_file' ),
+			10,
+			4
+		);
+		add_filter(
+			'woocommerce_email_actions',
+			array( $this, 'email_action' )
+		);
+		add_action(
+			'woocommerce_order_details_before_order_table',
+			array( $this, 'order_progress_in_details' )
+		);
+		// @codingStandardsIgnoreEnd
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_style' ) );
+	}
+
+	/**
+	 * Define Y4SENT Constants.
+	 */
+	private function define_constants() {
+		$this->define( 'Y4SENT_VERSION', $this->version );
+	}
+
+	/**
+	 * Define constant if not already set.
+	 *
+	 * @param string      $name  Constant name.
+	 * @param string|bool $value Constant value.
+	 */
+	private function define( $name, $value ) {
+		if ( ! defined( $name ) ) {
+			define( $name, $value );
 		}
 	}
 
@@ -195,5 +227,81 @@ final class Y4sent {
 	public function email_action( $email_actions ) {
 		$email_actions[] = 'woocommerce_order_status_sent';
 		return $email_actions;
+	}
+
+	/**
+	 * Get order steps.
+	 *
+	 * @param object $order Order object.
+	 * @return array
+	 */
+	public function order_steps( $order ) {
+		$steps = array(
+			'placed'     => array(
+				'label'   => _x( 'Placed', 'Order step', 'y4sent' ),
+				'reached' => true,
+			),
+			'processing' => array(
+				'label'   => _x( 'Processing', 'Order step', 'y4sent' ),
+				'reached' => true,
+			),
+			'completed'  => array(
+				'label'   => _x( 'Completed', 'Order step', 'y4sent' ),
+				'reached' => false,
+			),
+			'sent'       => array(
+				'label'   => _x( 'Sent', 'Order step', 'y4sent' ),
+				'reached' => false,
+			),
+		);
+
+		$completed_statuses = apply_filters( 'y4sent_completed_statuses', array( 'completed', 'sent' ) );
+		if ( in_array( $order->get_status(), $completed_statuses, true ) ) {
+			$steps['completed']['reached'] = true;
+		}
+		$sent_statuses = apply_filters( 'y4sent_sent_statuses', array( 'sent' ) );
+		if ( in_array( $order->get_status(), $sent_statuses, true ) ) {
+			$steps['sent']['reached'] = true;
+		}
+		$steps = apply_filters( 'y4sent_order_steps', $steps );
+		return $steps;
+	}
+
+	/**
+	 * Add order progress in details.
+	 *
+	 * @param object $order Order object.
+	 */
+	public function order_progress_in_details( $order ) {
+		wc_get_template(
+			'order/progress.php',
+			array(
+				'order'       => $order,
+				'order_steps' => $this->order_steps( $order ),
+			),
+			'',
+			$this->template_base
+		);
+	}
+
+	/**
+	 * Return asset URL.
+	 *
+	 * @param string $path Assets path.
+	 * @return string
+	 */
+	private static function get_asset_url( $path ) {
+		return apply_filters( 'y4sent_get_asset_url', plugins_url( $path, Y4SENT_PLUGIN_FILE ), $path );
+	}
+
+	/**
+	 * Register/queue frontend style.
+	 */
+	public static function load_style() {
+		wp_register_style( 'y4sent', self::get_asset_url( 'assets/css/y4sent.css' ), array(), Y4SENT_VERSION );
+
+		if ( self::is_wc_active() ) {
+			wp_enqueue_style( 'y4sent' );
+		}
 	}
 }

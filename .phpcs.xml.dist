@@ -52,4 +52,10 @@
 		<exclude-pattern>/templates/emails/customer-sent-order.php</exclude-pattern>
 		<exclude-pattern>/templates/emails/plain/customer-sent-order.php</exclude-pattern>
 	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>/templates/order/progress.php</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound">
+		<exclude-pattern>/includes/class-y4sent.php</exclude-pattern>
+	</rule>
 </ruleset>

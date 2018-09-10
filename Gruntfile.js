@@ -2,6 +2,8 @@ module.exports = function( grunt ) {
 
 	'use strict';
 
+	require( 'load-grunt-tasks' )( grunt );
+
 	// Project configuration
 	grunt.initConfig( {
 
@@ -43,10 +45,48 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+
+		watch: {
+			files: 'assets/sass/**/*.scss',
+			tasks: ['sass']
+		},
+
+		sass: {
+			options: { sourceMap: false },
+			dev: {
+				files: {
+					'assets/css/y4sent.css': 'assets/sass/y4sent.scss'
+				}
+			}
+		},
+
+		autoprefixer: {
+			options: {
+				browsers: [
+					"Android 2.3",
+					"Android >= 4",
+					"Chrome >= 20",
+					"Firefox >= 24",
+					"Explorer >= 8",
+					"iOS >= 6",
+					"Opera >= 12",
+					"Safari >= 6"
+				]
+			},
+			style: {
+				src: ['assets/css/y4sent.css']
+			}
+		},
+
+		cssmin: {
+			main: {
+				files: {
+					'assets/css/y4sent.css': ['assets/css/y4sent.css']
+				}
+			}
+		},
 	} );
 
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.registerTask( 'default', [ 'i18n','readme' ] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
