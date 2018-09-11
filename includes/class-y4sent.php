@@ -77,6 +77,7 @@ final class Y4sent {
 		);
 		// @codingStandardsIgnoreEnd
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_style' ) );
+		self::shortcode();
 	}
 
 	/**
@@ -339,5 +340,29 @@ final class Y4sent {
 		if ( self::is_wc_active() ) {
 			wp_enqueue_style( 'y4sent' );
 		}
+	}
+
+	/**
+	 * Init shortcode.
+	 */
+	public static function shortcode() {
+		$shortcodes = array(
+			'y4sent_last_order' => __CLASS__ . '::shortcode_last_order',
+		);
+
+		foreach ( $shortcodes as $shortcode => $function ) {
+			add_shortcode( apply_filters( "{$shortcode}_shortcode_tag", $shortcode ), $function ); // @codingStandardsIgnoreLine
+		}
+	}
+
+	/**
+	 * Order progress shortcode.
+	 *
+	 * @param array $atts Attributes.
+	 * @return string
+	 */
+	public static function shortcode_last_order( $atts ) {
+		require_once dirname( __FILE__ ) . '/shortcodes/class-y4sent-shortcode-last-order.php';
+		return WC_Shortcodes::shortcode_wrapper( array( 'Y4sent_Shortcode_Last_Order', 'output' ), $atts );
 	}
 }
