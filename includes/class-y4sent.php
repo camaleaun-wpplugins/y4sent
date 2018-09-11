@@ -29,6 +29,13 @@ final class Y4sent {
 	public $template_base;
 
 	/**
+	 * Order steps count, total and actives.
+	 *
+	 * @var array
+	 */
+	private $steps;
+
+	/**
 	 * Constructor for class. Hooks in methods.
 	 */
 	public function __construct() {
@@ -273,15 +280,44 @@ final class Y4sent {
 	 * @param object $order Order object.
 	 */
 	public function order_progress_in_details( $order ) {
+		$order_steps = $this->order_steps( $order );
+
+		self::steps_progress_style( $order_steps );
+
 		wc_get_template(
 			'order/progress.php',
 			array(
 				'order'       => $order,
-				'order_steps' => $this->order_steps( $order ),
+				'order_steps' => $order_steps,
 			),
 			'',
 			$this->template_base
 		);
+	}
+
+	/**
+	 * Print inline frontend style.
+	 *
+	 * @param array $order_steps Order steps data.
+	 */
+	public static function steps_progress_style( $order_steps ) {
+		$actives = 0;
+		foreach ( $order_steps as $step ) {
+			if ( isset( $step['reached'] ) && $step['reached'] ) {
+				$actives++;
+			}
+		}
+
+		$fraction = 100 / ( count( $order_steps ) * 2 );
+
+		$style  = '.y4sent-order-steps::before{';
+		$style .= 'left:' . $fraction . '%;';
+		$style .= 'width:' . $fraction * ( ( $actives * 2 ) - 2 ) . '%}';
+		$style .= '.y4sent-order-steps::after{';
+		$style .= 'left:' . $fraction . '%;';
+		$style .= 'width:' . ( 100 - ( $fraction * 2 ) ) . '%}';
+
+		printf( '<style type="text/css">%s</style>', esc_attr( $style ) );
 	}
 
 	/**

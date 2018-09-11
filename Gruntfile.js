@@ -88,8 +88,9 @@ module.exports = function( grunt ) {
 	} );
 
 	grunt.registerTask( 'default', [ 'i18n','readme' ] );
-	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
-	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'i18n', [ 'addtextdomain', 'makepot' ] );
+	grunt.registerTask( 'readme', [ 'wp_readme_to_markdown' ] );
+	grunt.registerTask( 'style', [ 'autoprefixer', 'cssmin' ] );
 
 	grunt.util.linefeed = '\n';
 

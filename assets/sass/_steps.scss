@@ -13,26 +13,24 @@
 	}
 
 	&::before {
-		width: 50%;
 		height: 8px;
 		background-color: lighten($primary, 25%);
 		top: 11px;
-		left: 12.5%;
+		z-index: 2;
 	}
 
 	&::after {
-		width: 25%;
 		height: 8px;
 		background-color: lighten($gray-600, 25%);
 		top: 11px;
-		left: 62.5%;
+		z-index: 1;
 	}
 
 	li {
 		@include make-col();
 		padding-top: 2rem;
 		position: relative;
-		z-index: 2;
+		z-index: 3;
 
 		&.active {
 			font-weight: bold;
