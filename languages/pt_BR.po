@@ -4,130 +4,138 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Sent Status 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/y4sent\n"
-"POT-Creation-Date: 2018-09-11 05:42:17+00:00\n"
+"POT-Creation-Date: 2018-09-11 02:42-0300\n"
+"PO-Revision-Date: 2018-09-11 02:42-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-y4sent.php:172
 #. translators: %s: number of orders
+#: includes/class-y4sent.php:172
 msgid "Sent <span class=\"count\">(%s)</span>"
 msgid_plural "Sent <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Enviado <span class=\"count\">(%s)</span>"
+msgstr[1] "Enviado <span class=\"count\">(%s)</span>"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:30
 msgid "Sent order"
-msgstr ""
+msgstr "Pedido enviado"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:31
 msgid ""
 "Order sent emails are sent to customers when their orders are marked sent "
 "and usually indicate that their orders have been shipped."
 msgstr ""
+"E-mails de pedidos enviados são enviados para o cliente quando o pedido é "
+"marcado como enviado e geralmente indica que o pedido foi enviado."
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:80
 msgid "Your {site_title} order from {order_date} was sent"
-msgstr ""
+msgstr "Seu pedido em {site_title} realizado em {order_date} foi enviado"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:89
 msgid "Your order was sent"
-msgstr ""
+msgstr "Seu pedido foi enviado"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:133
 msgid "Enable/Disable"
-msgstr ""
+msgstr "Habilitar/Desabilitar"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:135
 msgid "Enable this email notification"
-msgstr ""
+msgstr "Ativar esse e-mail de notificação"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:139
 msgid "Subject"
-msgstr ""
+msgstr "Assunto"
 
+#. translators: %s: list of placeholders
 #: includes/emails/class-y4sent-email-customer-sent-order.php:143
 #: includes/emails/class-y4sent-email-customer-sent-order.php:152
-#. translators: %s: list of placeholders
 msgid "Available placeholders: %s"
-msgstr ""
+msgstr "Substituidores disponíveis: %s"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:148
 msgid "Email heading"
-msgstr ""
+msgstr "Cabeçalho do e-mail"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:157
 msgid "Email type"
-msgstr ""
+msgstr "Tipo do e-mail"
 
 #: includes/emails/class-y4sent-email-customer-sent-order.php:159
 msgid "Choose which format of email to send."
-msgstr ""
+msgstr "Escolha o formato de e-mail para enviar."
 
+#. translators: Blog name
 #: templates/emails/customer-sent-order.php:30
 #: templates/emails/plain/customer-sent-order.php:27
-#. translators: Blog name
 msgid ""
 "Hi there. Your recent order on %s was sent. Your order details are shown "
 "below for your reference:"
 msgstr ""
+"Olá. Seu pedido recente em %s foi enviado. Os detalhes do pedido serão "
+"exibidos abaixo para sua conferência:"
 
 #. Plugin Name of the plugin/theme
 msgid "WooCommerce Sent Status"
-msgstr ""
+msgstr "WooCommece Situação Enviado"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/camaleaun/y4sent"
-msgstr ""
+msgstr "https://github.com/camaleaun/y4sent"
 
 #. Description of the plugin/theme
 msgid "WooCommerce sent status to order"
-msgstr ""
+msgstr "WooCommece Situação Enviado para pedidos"
 
 #. Author of the plugin/theme
 msgid "Yogh"
-msgstr ""
+msgstr "Yogh"
 
 #. Author URI of the plugin/theme
 msgid "https://www.yogh.com.br"
-msgstr ""
+msgstr "https://www.yogh.com.br"
 
 #: includes/class-y4sent.php:166 includes/class-y4sent.php:189
 msgctxt "Order status"
 msgid "Sent"
-msgstr ""
+msgstr "Enviado"
 
 #: includes/class-y4sent.php:273
 msgctxt "Order step"
 msgid "Placed"
-msgstr ""
+msgstr "Realizado"
 
 #: includes/class-y4sent.php:277
 msgctxt "Order step"
 msgid "Processing"
-msgstr ""
+msgstr "Processando"
 
 #: includes/class-y4sent.php:281
 msgctxt "Order step"
 msgid "Completed"
-msgstr ""
+msgstr "Concluído"
 
 #: includes/class-y4sent.php:285
 msgctxt "Order step"
 msgid "Sent"
-msgstr ""
+msgstr "Enviado"
+
+#~ msgid "Your {site_title} order from {order_date} is sent"
+#~ msgstr "Seu pedido em {site_title} realizado em {order_date} foi enviado"
+
+#~ msgid "Your order is sent"
+#~ msgstr "Seu pedido foi enviado"

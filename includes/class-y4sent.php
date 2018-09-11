@@ -39,7 +39,11 @@ final class Y4sent {
 	 * Constructor for class. Hooks in methods.
 	 */
 	public function __construct() {
+		// Set up localisation.
+		$this->load_plugin_textdomain();
+
 		$this->define_constants();
+
 		// @codingStandardsIgnoreStart
 		add_filter(
 			'woocommerce_register_shop_order_post_statuses',
@@ -76,7 +80,9 @@ final class Y4sent {
 			array( $this, 'order_progress_in_details' )
 		);
 		// @codingStandardsIgnoreEnd
+
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_style' ) );
+
 		self::shortcode();
 	}
 
@@ -128,6 +134,26 @@ final class Y4sent {
 		}
 
 		return $check;
+	}
+
+	/**
+	 * Load Localisation files.
+	 *
+	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
+	 *
+	 * Locales found in:
+	 *      - Y4SENT_DIR/languages/LOCALE.mo
+	 *      - WP_LANG_DIR/y4sent/y4sent-LOCALE.mo
+	 *      - WP_LANG_DIR/plugins/y4sent-LOCALE.mo
+	 */
+	public function load_plugin_textdomain() {
+		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+		$locale = apply_filters( 'plugin_locale', $locale, 'y4sent' ); // @codingStandardsIgnoreLine
+
+		unload_textdomain( 'y4sent' );
+		load_textdomain( 'y4sent', dirname( Y4SENT_PLUGIN_FILE ) . '/languages/' . $locale . '.mo' );
+		load_textdomain( 'y4sent', WP_LANG_DIR . '/y4sent/y4sent-' . $locale . '.mo' );
+		load_plugin_textdomain( 'y4sent', false, plugin_basename( dirname( Y4SENT_PLUGIN_FILE ) ) . '/languages' );
 	}
 
 	/**
